@@ -1,135 +1,120 @@
-# SysGuard - System Monitoring and Alerting Tool
+# SysGuard — Windows Rendszermonitor
 
-![SysGuard Logo](https://img.shields.io/badge/SysGuard-System%20Monitor-blue)
-![Python](https://img.shields.io/badge/Python-3.7%2B-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+**Python alapú rendszermonitorozó eszköz, amely valós időben figyeli a CPU, RAM, lemez és hálózat használatot, és riasztást küld határértékek átlépésekor.**
 
-SysGuard is an automated system monitoring tool that tracks CPU, memory, disk, network usage, and running processes. It provides real-time alerts when system resources exceed configured thresholds.
+## 📊 Leírás
 
-## Features
+A SysGuard egy könnyűsúlyú, konfigurálható rendszermonitor, amely:
 
-- **Real-time Monitoring**: CPU, Memory, Disk, Network, Processes
-- **Configurable Thresholds**: Set warning and critical levels
-- **Email Alerts**: Get notified when issues occur
-- **JSON Logging**: All metrics saved in structured format
-- **Simple CLI**: Easy-to-use command line interface
-- **Extensible**: Modular design for adding new monitors
+- **CPU használat** figyelése (összesített és magonkénti)
+- **RAM foglaltság** monitorozása
+- **Lemez I/O** és szabad hely követése
+- **Hálózati forgalom** mérése (küldött/fogadott bájtok)
+- **Konfigurálható riasztások** — email értesítés határérték átlépéskor
+- **JSON és log formátumú** metrika gyűjtés
+- **Könnyű és erőforrás-takarékos** működés
 
-## Quick Start
-
-### 1. Installation
-
-```bash
-# Clone or extract to your desktop
-cd C:\Users\iga\Desktop\SysGuard
-
-# Install dependencies
-python install.py
-```
-
-### 2. Configuration
-
-Edit `config/config.json` to set your thresholds and alert settings:
-
-```json
-{
-  "system": {
-    "monitor_interval_seconds": 30,
-    "log_level": "INFO"
-  },
-  "thresholds": {
-    "cpu_warning": 70,
-    "cpu_critical": 90,
-    "memory_warning": 75,
-    "memory_critical": 90
-  }
-}
-```
-
-For email alerts, configure the `alerting` section with your SMTP settings.
-
-### 3. Running
-
-**Full version (with logging and alerts):**
-```bash
-python sysguard.py
-```
-
-**Simple version (console output only):**
-```bash
-python sysguard_simple.py
-```
-
-**Demo mode (run 5 cycles):**
-```bash
-python sysguard_simple.py
-```
-
-## Project Structure
+## 📁 Fájlszerkezet
 
 ```
 SysGuard/
+├── sysguard.py                  # Teljes funkcionalitású monitor (318 sor)
+├── sysguard_simple.py           # Egyszerűsített verzió
+├── install.py                   # Telepítő szkript
 ├── config/
-│   └── config.json          # Configuration file
-├── logs/                    # Log files directory
-├── modules/                 # Future module extensions
-├── tests/                   # Test files
-├── sysguard.py             # Main monitoring application
-├── sysguard_simple.py      # Simplified version
-├── install.py              # Installation script
-├── requirements.txt        # Python dependencies
-└── README.md              # This file
+│   └── config.json              # Konfigurációs fájl
+├── logs/
+│   ├── sysguard_YYYYMMDD.log    # Rendszernaplók
+│   └── metrics_YYYYMMDD.json    # Metrika adatok
+├── start.bat                    # Windows indító (batch)
+├── Start-SysGuard.ps1           # Windows indító (PowerShell)
+└── README.md
 ```
 
-## Configuration Options
+## 🚀 Használat
 
-### System Settings
-- `monitor_interval_seconds`: How often to check metrics (default: 30)
-- `log_level`: Logging level (DEBUG, INFO, WARNING, ERROR)
+### Telepítés
 
-### Thresholds
-- `cpu_warning/cpu_critical`: CPU usage percentages
-- `memory_warning/memory_critical`: Memory usage percentages
-- `disk_warning/disk_critical`: Disk usage percentages
-
-### Alerting
-- `enabled`: Enable/disable alerts
-- `email`: SMTP configuration for email alerts
-- `telegram`: Telegram bot configuration (future)
-
-## Example Output
-
-```
-2025-03-06 17:30:00 - SysGuard - INFO - Starting monitoring cycle
-2025-03-06 17:30:01 - SysGuard - INFO - CPU: 45.2%, Memory: 67.8%, Processes: 142
-2025-03-06 17:30:01 - SysGuard - WARNING - Memory usage high: 67.8%
-2025-03-06 17:30:01 - SysGuard - INFO - Cycle complete. Alerts: 1
+```bash
+python install.py
 ```
 
-## Requirements
+### Indítás
 
-- Python 3.7 or higher
-- psutil library
-- Internet connection (for email alerts)
+```bash
+# Teljes verzió
+python sysguard.py
 
-## License
+# PowerShell
+.\Start-SysGuard.ps1
 
-MIT License - see LICENSE file for details.
+# Batch
+start.bat
+```
 
-## Contributing
+### Konfiguráció
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+A `config/config.json` fájlban állítható:
 
-## Support
+```json
+{
+  "monitoring_interval": 5,
+  "cpu_threshold": 90,
+  "memory_threshold": 85,
+  "disk_threshold": 90,
+  "network_alert_mb": 1000,
+  "email_alerts": {
+    "enabled": false,
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "from_email": "",
+    "to_email": ""
+  },
+  "log_retention_days": 30
+}
+```
 
-For issues or questions:
-1. Check the logs in `logs/` directory
-2. Review configuration in `config/config.json`
-3. Open an issue on GitHub
+### Riasztási szintek
 
----
+| Erőforrás | Figyelmeztetés | Kritikus | Alapértelmezett művelet |
+|-----------|---------------|----------|------------------------|
+| CPU | >80% | >90% | Email riasztás |
+| RAM | >75% | >85% | Email riasztás |
+| Lemez | >80% | >90% | Email riasztás |
+| Hálózat | >500 MB/perc | >1000 MB/perc | Email riasztás |
 
-**Note**: This tool is for monitoring purposes only. Always test in a safe environment before deploying to production systems.
+## 📦 Függőségek
+
+```bash
+pip install psutil
+```
+
+- **Python 3.8+**
+- **psutil** — rendszer erőforrások lekérdezése
+- Standard library: `json`, `logging`, `smtplib`, `email`
+
+## 📈 Kimenet formátumok
+
+### Log fájl
+```
+2026-04-29 14:30:05 - SysGuard - INFO - Monitoring started
+2026-04-29 14:30:10 - SysGuard - INFO - CPU: 45.2% | RAM: 62.1% | Disk: 34.8%
+```
+
+### JSON metrika
+```json
+{
+  "timestamp": "2026-04-29T14:30:10",
+  "cpu_percent": 45.2,
+  "memory_percent": 62.1,
+  "disk_percent": 34.8,
+  "network_sent_mb": 12.5,
+  "network_recv_mb": 8.3
+}
+```
+
+## ⚙️ Automatikus indítás
+
+A rendszerrel együtt indítható:
+1. `Windows + R` → `shell:startup`
+2. Hozz létre egy parancsikont a `start.bat`-ra
