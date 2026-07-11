@@ -1,48 +1,48 @@
-# SysGuard — Windows Rendszermonitor
+# SysGuard — Windows System Monitor
 
-**Python alapú rendszermonitorozó eszköz, amely valós időben figyeli a CPU, RAM, lemez és hálózat használatot, és riasztást küld határértékek átlépésekor.**
+**A Python-based system monitoring tool that tracks CPU, RAM, disk, and network usage in real time and sends alerts when thresholds are exceeded.**
 
-## 📊 Leírás
+## 📊 Description
 
-A SysGuard egy könnyűsúlyú, konfigurálható rendszermonitor, amely:
+SysGuard is a lightweight, configurable system monitor that:
 
-- **CPU használat** figyelése (összesített és magonkénti)
-- **RAM foglaltság** monitorozása
-- **Lemez I/O** és szabad hely követése
-- **Hálózati forgalom** mérése (küldött/fogadott bájtok)
-- **Konfigurálható riasztások** — email értesítés határérték átlépéskor
-- **JSON és log formátumú** metrika gyűjtés
-- **Könnyű és erőforrás-takarékos** működés
+- Monitors **CPU usage** (aggregate and per-core)
+- Tracks **RAM utilization**
+- Monitors **disk I/O** and free space
+- Measures **network traffic** (bytes sent/received)
+- Provides **configurable alerts** — email notification on threshold breaches
+- Collects metrics in **JSON and log formats**
+- Operates with a **lightweight and resource-efficient** footprint
 
-## 📁 Fájlszerkezet
+## 📁 File Structure
 
 ```
 SysGuard/
-├── sysguard.py                  # Teljes funkcionalitású monitor (318 sor)
-├── sysguard_simple.py           # Egyszerűsített verzió
-├── install.py                   # Telepítő szkript
+├── sysguard.py                  # Full-featured monitor (318 lines)
+├── sysguard_simple.py           # Simplified version
+├── install.py                   # Installer script
 ├── config/
-│   └── config.json              # Konfigurációs fájl
+│   └── config.json              # Configuration file
 ├── logs/
-│   ├── sysguard_YYYYMMDD.log    # Rendszernaplók
-│   └── metrics_YYYYMMDD.json    # Metrika adatok
-├── start.bat                    # Windows indító (batch)
-├── Start-SysGuard.ps1           # Windows indító (PowerShell)
+│   ├── sysguard_YYYYMMDD.log    # System logs
+│   └── metrics_YYYYMMDD.json    # Metric data
+├── start.bat                    # Windows launcher (batch)
+├── Start-SysGuard.ps1           # Windows launcher (PowerShell)
 └── README.md
 ```
 
-## 🚀 Használat
+## 🚀 Usage
 
-### Telepítés
+### Installation
 
 ```bash
 python install.py
 ```
 
-### Indítás
+### Starting
 
 ```bash
-# Teljes verzió
+# Full version
 python sysguard.py
 
 # PowerShell
@@ -52,9 +52,9 @@ python sysguard.py
 start.bat
 ```
 
-### Konfiguráció
+### Configuration
 
-A `config/config.json` fájlban állítható:
+The following can be set in `config/config.json`:
 
 ```json
 {
@@ -74,34 +74,34 @@ A `config/config.json` fájlban állítható:
 }
 ```
 
-### Riasztási szintek
+### Alert Levels
 
-| Erőforrás | Figyelmeztetés | Kritikus | Alapértelmezett művelet |
-|-----------|---------------|----------|------------------------|
-| CPU | >80% | >90% | Email riasztás |
-| RAM | >75% | >85% | Email riasztás |
-| Lemez | >80% | >90% | Email riasztás |
-| Hálózat | >500 MB/perc | >1000 MB/perc | Email riasztás |
+| Resource | Warning | Critical | Default Action |
+|----------|---------|----------|----------------|
+| CPU | >80% | >90% | Email alert |
+| RAM | >75% | >85% | Email alert |
+| Disk | >80% | >90% | Email alert |
+| Network | >500 MB/min | >1000 MB/min | Email alert |
 
-## 📦 Függőségek
+## 📦 Dependencies
 
 ```bash
 pip install psutil
 ```
 
 - **Python 3.8+**
-- **psutil** — rendszer erőforrások lekérdezése
+- **psutil** — system resource queries
 - Standard library: `json`, `logging`, `smtplib`, `email`
 
-## 📈 Kimenet formátumok
+## 📈 Output Formats
 
-### Log fájl
+### Log file
 ```
 2026-04-29 14:30:05 - SysGuard - INFO - Monitoring started
 2026-04-29 14:30:10 - SysGuard - INFO - CPU: 45.2% | RAM: 62.1% | Disk: 34.8%
 ```
 
-### JSON metrika
+### JSON metrics
 ```json
 {
   "timestamp": "2026-04-29T14:30:10",
@@ -113,8 +113,11 @@ pip install psutil
 }
 ```
 
-## ⚙️ Automatikus indítás
+## ⚙️ Auto-start
 
-A rendszerrel együtt indítható:
+Can be launched with the system:
 1. `Windows + R` → `shell:startup`
-2. Hozz létre egy parancsikont a `start.bat`-ra
+2. Create a shortcut to `start.bat`
+
+## Author
+Zsombi & Hermes Agent (Nous Research)
