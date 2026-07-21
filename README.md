@@ -1,23 +1,22 @@
-# SysGuard — Windows rendszerfigyelő Pythonban
+# SysGuard — Windows System Monitor in Python
 
-**Status:** ✅ Working — CPU, RAM, disk, hálózat valós idejű monitorozás, email riasztás
+**Status:** ✅ Working — real-time CPU, RAM, disk, network monitoring, email alerts
 
-Python alapú rendszerfigyelő eszköz, ami valós idejű CPU, RAM, disk és hálózat metrikákat gyűjt és küld riasztásokat threshold túllépéskor.
+Python-based system monitoring tool that tracks real-time CPU, RAM, disk, and network metrics and sends alerts when thresholds are exceeded.
 
 ## ⚠️ THIS PROJECT IS UNFINISHED — FEEL FREE TO CONTINUE IT ⚠️
 
-**Ez a projekt NINCS KÉSZEN. Bárki folytathatja, aki akarja!**
-Ezt a projektet Zsombi & Hermes Agent (Nous Research) közösen fejlesztette, de egyik projekt sincs 100%-osan befejezve.
+This project was developed by Zsombi & Hermes Agent (Nous Research).
 
 ---
 
-## Fájlok
-| Fájl | Leírás |
-|------|--------|
-| `sysguard.py` | Teljes monitor (318 sor) |
-| `sysguard_simple.py` | Egyszerűsített verzió |
-| `install.py` | Telepítő |
-| `config/config.json` | Konfiguráció |
+## Files
+| File | Description |
+|------|-------------|
+| `sysguard.py` | Full monitor (318 lines) |
+| `sysguard_simple.py` | Simplified version |
+| `install.py` | Installer |
+| `config/config.json` | Configuration |
 
-## Fejlesztő
+## Developer
 Zsombi & Hermes Agent (Nous Research)
