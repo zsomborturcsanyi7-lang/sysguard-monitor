@@ -1,19 +1,19 @@
 # sysguard-monitor
 
-Windows rendszererőforrás-figyelő és értesítő alkalmazás Python és Go modulokkal.
+Windows system resource monitor and alert application with Python and Go modules.
 
-## 📌 A projekt célja
-Rendszererőforrások (CPU, RAM, lemezterület, hálózat) monitorozása valós időben és e-mail riasztások küldése a határértékek átlépésekor.
+## 📌 Overview & Purpose
+Monitors system resources (CPU, RAM, Disk, Network) in real-time and sends email notifications when defined threshold limits are breached.
 
-## ⚙️ Technológiai stakk
-- **Nyelv**: Python, Go (`psutil`)
+## ⚙️ Tech Stack & Architecture
+- **Languages**: Python, Go (`psutil`)
 
-## 🚀 Telepítés és Használat
+## 🚀 Installation & Quickstart
 ```bash
 git clone https://github.com/zsomborturcsanyi7-lang/sysguard-monitor.git
 cd sysguard-monitor
 python monitor.py
 ```
 
-## 📊 Status
-⚠️ **Működő eszköz**.
+## 📊 Project Status
+⚠️ **Functional Tool**.
