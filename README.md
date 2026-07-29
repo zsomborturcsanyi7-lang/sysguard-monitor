@@ -1,22 +1,19 @@
 # sysguard-monitor
 
-**Status:** ✅ Working — real-time CPU, RAM, disk, network monitoring, email alerts
+Windows rendszererőforrás-figyelő és értesítő alkalmazás Python és Go modulokkal.
 
-Python-based system monitoring tool that tracks real-time CPU, RAM, disk, and network metrics and sends alerts when thresholds are exceeded.
+## 📌 A projekt célja
+Rendszererőforrások (CPU, RAM, lemezterület, hálózat) monitorozása valós időben és e-mail riasztások küldése a határértékek átlépésekor.
 
-## ⚠️ THIS PROJECT IS UNFINISHED — FEEL FREE TO CONTINUE IT ⚠️
+## ⚙️ Technológiai stakk
+- **Nyelv**: Python, Go (`psutil`)
 
-This project was developed by Zsombi & Hermes Agent (Nous Research).
+## 🚀 Telepítés és Használat
+```bash
+git clone https://github.com/zsomborturcsanyi7-lang/sysguard-monitor.git
+cd sysguard-monitor
+python monitor.py
+```
 
----
-
-## Files
-| File | Description |
-|------|-------------|
-| `sysguard.py` | Full monitor (318 lines) |
-| `sysguard_simple.py` | Simplified version |
-| `install.py` | Installer |
-| `config/config.json` | Configuration |
-
-## Developer
-Zsombi & Hermes Agent (Nous Research)
+## 📊 Status
+⚠️ **Működő eszköz**.
