@@ -1,4 +1,4 @@
-# SysGuard — Windows System Monitor in Python
+# sysguard-monitor
 
 **Status:** ✅ Working — real-time CPU, RAM, disk, network monitoring, email alerts
 
